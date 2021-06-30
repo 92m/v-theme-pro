@@ -5,21 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const UI_NAME = require('../package.json').name;
 
 
-const isPlay = !!process.env.PLAY_ENV
-const isProd = process.env.NODE_ENV === 'production'
+const isPlay = !!process.env.PLAY_ENV;
+const isProd = process.env.NODE_ENV === 'production';
 
 const config = {
   mode:  isProd ? 'production' : 'development',
   devtool: !isProd && 'eval-cheap-module-source-map',
   entry: isPlay
-  ? path.resolve(__dirname, './play.js')
-  : path.resolve(__dirname, './entry.js')
-  ,
+    ? path.resolve(__dirname, './play.js')
+    : path.resolve(__dirname, './entry.js'),
   output: {
     path: path.resolve(__dirname, '../website-dist'),
     publicPath: '/',
@@ -45,8 +44,8 @@ const config = {
         test: /\.(svg|otf|ttf|woff2?|eot|gif|png|jpe?g)(\?\S*)?$/,
         type: 'asset/resource',
         generator: {
-					filename: 'static/[name].[hash:7].[ext]'
-				}
+          filename: 'static/[name].[hash:7].[ext]'
+        }
       },
       {
         test: /\.s[ac]ss$/i,
@@ -86,7 +85,7 @@ const config = {
       __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
     }),
     new BundleAnalyzerPlugin(),
-  ], 
+  ],
   devServer: {
     inline: true,
     hot: true,
@@ -101,7 +100,7 @@ const config = {
       new CssMinimizerPlugin(),
     ],
   },
-}
+};
 
 
-module.exports = config
+module.exports = config;

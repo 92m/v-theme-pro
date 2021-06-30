@@ -1,5 +1,5 @@
-import num1  from "v-theme-pro"
+import num1  from 'v-theme-pro';
 
-import './asstes/index.scss'
+import './asstes/index.scss';
 
-console.log('test-num1', num1)
+console.log('test-num1', num1);

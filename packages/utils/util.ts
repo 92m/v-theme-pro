@@ -1,5 +1,5 @@
-let num1:number = 1;
+const num1 = 1;
 
 export default  {
   num1
-}
+};

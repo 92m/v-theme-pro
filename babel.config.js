@@ -1,5 +1,5 @@
 module.exports = {
-  "presets": [
+  'presets': [
     [
       '@babel/env',
       {
@@ -9,4 +9,4 @@ module.exports = {
     ],
     '@babel/typescript'
   ]
-}
+};
