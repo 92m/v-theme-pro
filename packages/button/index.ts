@@ -1,5 +1,8 @@
-const num1 = 1;
+import { App } from 'vue';
+import Button from './src/index.vue';
 
-export default  {
-  num1
+Button.install = (app: App): void => {
+  app.component(Button.name, Button);
 };
+
+export default Button;

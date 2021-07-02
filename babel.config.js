@@ -7,11 +7,12 @@ module.exports = {
         modules: false,
       },
     ],
-    '@babel/typescript'
+    '@babel/typescript',
+    '@babel/preset-typescript'
   ],
   plugins: [
     '@vue/babel-plugin-jsx',
-    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    ['@babel/plugin-proposal-class-properties', { 'loose': true }],
     '@babel/transform-runtime',
     'lodash',
   ],
