@@ -1,6 +1,7 @@
-import { createApp, nextTick } from 'vue';
+import { createApp } from 'vue';
 import VThemePro  from 'v-theme-pro';
 
+import App from './App.vue';
 import './asstes/index.scss';
 
 const app = createApp(App);

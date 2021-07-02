@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const UI_NAME = require('../package.json').name;
 
@@ -70,6 +70,7 @@ const config = {
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
+      minify: false,
       title: UI_NAME,
       inject: true,
       template: './website/index.tpl',
@@ -84,15 +85,10 @@ const config = {
       __VUE_OPTIONS_API__: JSON.stringify(true),
       __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
-  devServer: {
-    inline: true,
-    hot: true,
-    stats: 'minimal',
-    publicPath: '/',
-    contentBase: __dirname,
-    overlay: true,
+  performance: {
+    hints: false,
   },
   optimization: {
     minimize: true,
@@ -102,5 +98,17 @@ const config = {
   },
 };
 
+if(!isProd) {
+  Object.assign({}, config, {
+    devServer: {
+      inline: true,
+      hot: true,
+      stats: 'minimal',
+      publicPath: '/',
+      contentBase: __dirname,
+      overlay: true,
+    },
+  });
+}
 
 module.exports = config;
